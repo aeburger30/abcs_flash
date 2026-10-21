@@ -172,12 +172,12 @@
     </div>
 
     <div id="gameContent">
-        <button class="icon-btn home-btn" onclick="goBack()" title="Main Menu">🏠</button>
-        <button class="icon-btn mute-btn" onclick="toggleMute()" id="muteBtn" title="Mute">🔊</button>
+        <button class="icon-btn home-btn" aria-label="Main Menu" onclick="goBack()" title="Main Menu">🏠</button>
+        <button class="icon-btn mute-btn" aria-label="Mute" onclick="toggleMute()" id="muteBtn" title="Mute">🔊</button>
 
         <h1>ABCs in a Flash!</h1>
         <div class="controls">
-            <select id="letterSet" onchange="changeSet()">
+            <select id="letterSet" aria-label="Select Letter Set" onchange="changeSet()">
                 <option value="all">All Letters (A-Z)</option>
                 <optgroup label="Groups">
                     <option value="set1">A - E</option>
@@ -192,7 +192,7 @@
                     <option value="diagonal">Diagonals</option>
                 </optgroup>
             </select>
-            <select id="mode" onchange="resetGame()">
+            <select id="mode" aria-label="Select Game Mode" onchange="resetGame()">
                 <option value="ordered">In Order</option>
                 <option value="random">Smart Random</option>
             </select>
@@ -203,8 +203,8 @@
         </div>
 
         <div class="actions">
-            <button class="round-btn btn-wrong" onclick="handleAnswer(false)">✖</button>
-            <button class="round-btn btn-correct" onclick="handleAnswer(true)">✔</button>
+            <button class="round-btn btn-wrong" aria-label="Wrong" onclick="handleAnswer(false)">✖</button>
+            <button class="round-btn btn-correct" aria-label="Correct" onclick="handleAnswer(true)">✔</button>
         </div>
 
         <button onclick="openReport()" style="margin-top: 20px; background: none; border: none; color: #888; text-decoration: underline; cursor: pointer; padding: 10px;">View Progress Report</button>
@@ -214,7 +214,7 @@
         <div class="modal">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px;">
                 <h2 style="margin:0; color: var(--secondary);">Progress Report</h2>
-                <button onclick="goBack()" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+                <button onclick="goBack()" aria-label="Close Report" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
             </div>
             <div style="overflow-y: auto; flex-grow: 1;">
                 <table id="reportTable">
