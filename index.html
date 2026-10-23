@@ -210,10 +210,10 @@
         <button onclick="openReport()" style="margin-top: 20px; background: none; border: none; color: #888; text-decoration: underline; cursor: pointer; padding: 10px;">View Progress Report</button>
     </div>
 
-    <div class="modal-overlay" id="reportModal">
-        <div class="modal">
+    <div class="modal-overlay" id="reportModal" onclick="if(event.target === this) goBack()">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="reportTitle">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px;">
-                <h2 style="margin:0; color: var(--secondary);">Progress Report</h2>
+                <h2 id="reportTitle" style="margin:0; color: var(--secondary);">Progress Report</h2>
                 <button onclick="goBack()" aria-label="Close Report" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
             </div>
             <div style="overflow-y: auto; flex-grow: 1;">
@@ -306,6 +306,12 @@
         };
 
         function goBack() { history.back(); }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && window.location.hash === '#report') {
+                goBack();
+            }
+        });
 
         /* --- GAME DATA --- */
         const fullAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
