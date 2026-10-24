@@ -203,8 +203,8 @@
         </div>
 
         <div class="actions">
-            <button class="round-btn btn-wrong" aria-label="Wrong" onclick="handleAnswer(false)">✖</button>
-            <button class="round-btn btn-correct" aria-label="Correct" onclick="handleAnswer(true)">✔</button>
+            <button class="round-btn btn-wrong" aria-label="Wrong" title="Wrong" onclick="handleAnswer(false)">✖</button>
+            <button class="round-btn btn-correct" aria-label="Correct" title="Correct" onclick="handleAnswer(true)">✔</button>
         </div>
 
         <button onclick="openReport()" style="margin-top: 20px; background: none; border: none; color: #888; text-decoration: underline; cursor: pointer; padding: 10px;">View Progress Report</button>
@@ -277,9 +277,13 @@
             if(isMuted) {
                 btn.innerText = "🔇";
                 btn.classList.add('muted');
+                btn.setAttribute('aria-label', 'Unmute');
+                btn.setAttribute('title', 'Unmute');
             } else {
                 btn.innerText = "🔊";
                 btn.classList.remove('muted');
+                btn.setAttribute('aria-label', 'Mute');
+                btn.setAttribute('title', 'Mute');
                 initAudio(); // Ensure audio is ready on unmute
                 playCorrectSound(); // Test sound
             }
