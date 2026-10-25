@@ -203,8 +203,8 @@
         </div>
 
         <div class="actions">
-            <button class="round-btn btn-wrong" aria-label="Wrong" onclick="handleAnswer(false)">✖</button>
-            <button class="round-btn btn-correct" aria-label="Correct" onclick="handleAnswer(true)">✔</button>
+            <button class="round-btn btn-wrong" aria-label="Wrong" aria-keyshortcuts="ArrowLeft" title="Wrong (Left Arrow)" onclick="handleAnswer(false)">✖</button>
+            <button class="round-btn btn-correct" aria-label="Correct" aria-keyshortcuts="ArrowRight" title="Correct (Right Arrow)" onclick="handleAnswer(true)">✔</button>
         </div>
 
         <button onclick="openReport()" style="margin-top: 20px; background: none; border: none; color: #888; text-decoration: underline; cursor: pointer; padding: 10px;">View Progress Report</button>
@@ -463,6 +463,22 @@
                 showReward();
             }
         }
+
+        // Add keyboard shortcuts for rapid sorting
+        document.addEventListener('keydown', function(event) {
+            if (window.location.hash !== '#game') return;
+
+            // Ignore if focus is in an input or select element
+            if (['INPUT', 'SELECT', 'TEXTAREA'].includes(event.target.tagName)) return;
+            // Ignore if key is held down to prevent rapid firing
+            if (event.repeat) return;
+
+            if (event.key === 'ArrowLeft') {
+                handleAnswer(false);
+            } else if (event.key === 'ArrowRight') {
+                handleAnswer(true);
+            }
+        });
 
     </script>
 
