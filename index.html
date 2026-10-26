@@ -199,12 +199,12 @@
         </div>
 
         <div class="card-container">
-            <div class="card" id="letterDisplay">A</div>
+            <div class="card" id="letterDisplay" aria-live="polite">A</div>
         </div>
 
         <div class="actions">
-            <button class="round-btn btn-wrong" aria-label="Wrong" onclick="handleAnswer(false)">✖</button>
-            <button class="round-btn btn-correct" aria-label="Correct" onclick="handleAnswer(true)">✔</button>
+            <button class="round-btn btn-wrong" aria-label="Wrong (Left Arrow)" title="Wrong (Left Arrow)" onclick="handleAnswer(false)">✖</button>
+            <button class="round-btn btn-correct" aria-label="Correct (Right Arrow)" title="Correct (Right Arrow)" onclick="handleAnswer(true)">✔</button>
         </div>
 
         <button onclick="openReport()" style="margin-top: 20px; background: none; border: none; color: #888; text-decoration: underline; cursor: pointer; padding: 10px;">View Progress Report</button>
@@ -464,10 +464,20 @@
             }
         }
 
+        document.addEventListener('keydown', (e) => {
+            if (window.location.hash === '#game') {
+                if (e.key === 'ArrowLeft') {
+                    handleAnswer(false);
+                } else if (e.key === 'ArrowRight') {
+                    handleAnswer(true);
+                }
+            }
+        });
+
     </script>
 
     <div id="rewardOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center;">
-        <img id="rewardImage" src="" style="max-width:90%; max-height:90%; border-radius:20px; box-shadow: 0 0 20px rgba(255,255,255,0.5);">
+        <img id="rewardImage" src="" alt="Reward animation" style="max-width:90%; max-height:90%; border-radius:20px; box-shadow: 0 0 20px rgba(255,255,255,0.5);">
     </div>
 </body>
 </html>
