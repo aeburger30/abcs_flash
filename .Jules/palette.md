@@ -1,0 +1,3 @@
+## 2024-05-24 - Hiding Text-Based Decorative Elements from Screen Readers
+**Learning:** Dynamically generated text-based decorative elements (like confetti made of stars and circles) interrupt screen reader flow because they are parsed as text content if not hidden.
+**Action:** When dynamically creating text-based visual effects, ensure elements are assigned `aria-hidden="true"` upon creation to keep the screen reader focused on core content.
